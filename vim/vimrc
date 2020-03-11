@@ -1,0 +1,69 @@
+"
+" .vimrc
+"
+
+" 不兼容vi
+set nocompatible  
+
+" 显示行号
+set number
+
+" 语法高亮
+syntax on
+
+" 搜索词高亮
+set hlsearch
+
+" tab 长度
+set tabstop=4
+
+" ctags
+set tags=./.tags;,.tags
+
+" 支持删除换行符
+set backspace=indent,eol,start
+
+
+"""""""""""""" 插件设置""""""""""""""
+"
+"   - 彩色括号
+let g:rainbow_active = 1
+
+"   - 状态栏
+if !has('gui_running')
+	set t_Co=256
+endif
+
+set laststatus=2
+let g:lightline = { 'colorscheme':'one'}
+
+"   - 编译运行
+"   自动打开 quickfix window 
+let g:asyncrun_open = 8
+"   任务结束时候提醒
+let g:asyncrun_bell = 1
+
+
+
+" 加载插件
+call plug#begin('~/.vim/plugged')
+
+" 目录树
+Plug 'preservim/nerdtree'
+
+" 彩色括号
+Plug 'oblitum/rainbow'
+
+" 注释
+Plug 'vim-scripts/The-NERD-Commenter'
+
+" 状态栏
+Plug 'itchyny/lightline.vim'
+
+" 编译运行
+Plug 'skywind3000/asyncrun.vim'
+
+call plug#end()
+
+
+
