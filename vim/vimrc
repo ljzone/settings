@@ -28,6 +28,13 @@ set backspace=indent,eol,start
 "
 "   - 彩色括号
 let g:rainbow_active = 1
+let g:rainbow_conf = {
+\  'guifgs' : ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick']
+\
+\
+\ }
+
+
 
 "   - 状态栏
 if !has('gui_running')
@@ -43,16 +50,17 @@ let g:asyncrun_open = 8
 "   任务结束时候提醒
 let g:asyncrun_bell = 1
 
+"   - 自动补全
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 
-
-" 加载插件
+"""""""""""加载插件""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
 " 目录树
 Plug 'preservim/nerdtree'
 
 " 彩色括号
-Plug 'oblitum/rainbow'
+Plug 'luochen1990/rainbow'
 
 " 注释
 Plug 'vim-scripts/The-NERD-Commenter'
@@ -63,7 +71,10 @@ Plug 'itchyny/lightline.vim'
 " 编译运行
 Plug 'skywind3000/asyncrun.vim'
 
-call plug#end()
+" 代码补全
+" Plug 'Valloric/YouCompleteMe'
+Plug 'https://gitee.com/ljzone/YouCompleteMe'
 
+call plug#end()
 
 
