@@ -16,17 +16,37 @@ set hlsearch
 
 " tab 长度
 set tabstop=4
+set shiftwidth=4
 
 " ctags
-set tags=./.tags;,.tags
+" set tags=./.tags;,.tags
+
+" 文件编码
+set shiftwidth=4
+
+" 高亮当前行
+set cursorline
+
 
 " 支持删除换行符
 set backspace=indent,eol,start
 
+"""""""""""""" 快捷键映射""""""""""'
+" 使用ctrl+hjkl 切换窗口
+noremap <c-h> <c-w>h
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-l> <c-w>l
+
 
 """""""""""""" 插件设置""""""""""""""
 "
+
+"   - 目录树
+"
+let NERDTreeWinSize=25
 "   - 彩色括号
+"
 let g:rainbow_active = 1
 let g:rainbow_conf = {
 \  'guifgs' : ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick']
@@ -34,9 +54,8 @@ let g:rainbow_conf = {
 \
 \ }
 
-
-
 "   - 状态栏
+"
 if !has('gui_running')
 	set t_Co=256
 endif
@@ -45,15 +64,39 @@ set laststatus=2
 let g:lightline = { 'colorscheme':'one'}
 
 "   - 编译运行
+"
 "   自动打开 quickfix window 
 let g:asyncrun_open = 8
 "   任务结束时候提醒
 let g:asyncrun_bell = 1
 
 "   - 自动补全
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+"
+let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+
+let g:ycm_semantic_triggers = {
+	\ 'c,cpp,python,java' : ['re!\w{2}'],
+    \ }
+
+" 取消语法检查
+let g:ycm_show_diagnostics_ui = 0
+
+" 白名单
+let g:ycm_filetype_whilelist = {
+	\ "c"   : 1,
+	\ "cpp" : 1,
+	\ "sh"  : 1,
+	\ "zsh" : 1,
+	\}
+
+" 
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_cache_omnifunc=0
+let g:ycm_seed_identifiers_with_syntax=1
+
 
 """""""""""加载插件""""""""""""""""
+
 call plug#begin('~/.vim/plugged')
 
 " 目录树
@@ -72,9 +115,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'skywind3000/asyncrun.vim'
 
 " 代码补全
+"
 " Plug 'Valloric/YouCompleteMe'
 Plug 'https://gitee.com/ljzone/YouCompleteMe'
-
 call plug#end()
 
 
